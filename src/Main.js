@@ -10,7 +10,8 @@ let mouse = {
     pressed: false
 };
 
-let enemy1 = new Enemy(100, 100, 50, 50);
+let enemies = [];
+let spawner = new EnemySpawner(300, 300, 50, 25);
 
 window.onload = ()=>{
     requestAnimationFrame(gameLoop)
@@ -23,14 +24,20 @@ function gameLoop(){
 }
 
 function update(){
+    spawner.update();
     player.update();
-    enemy1.update();
+    for(let i = 0; i < enemies.length; i++){
+        enemies[i].update()
+    }
 }
 
 function render(){
+    spawner.render();
     graphics.clearRect(0, 0, frame.width, frame.height);
     player.render();
-    enemy1.render();
+    for(let i = 0; i < enemies.length; i++){
+        enemies[i].render()
+    }
 }
 
 // Handle Mouse Input
