@@ -13,8 +13,6 @@ class Entity{
     update(){
         this.x += this.xVelocity;
         this.y += this.yVelocity;
-        this.xVelocity *= 0.80;
-        this.yVelocity *= 0.80;
     }
 
     render(){
