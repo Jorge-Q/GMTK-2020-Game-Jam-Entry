@@ -6,6 +6,8 @@ let background = new Image();
 background.src = "./sprites/background.png";
 
 let player = new Player(50, 50, 28, 30);
+let health = new Health(20, 20, 30, 24);
+
 let gun = new Gun(player.x, player.y, 22, 10);
 let mouse = {
     x: 0,
@@ -53,6 +55,7 @@ function render(){
     for(let i = 0; i < dogs.length; i++){
         dogs[i].render()
     }
+    health.render();
 }
 
 // Handle Mouse Input

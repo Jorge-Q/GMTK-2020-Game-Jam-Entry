@@ -4,8 +4,8 @@ class Bullet extends Entity{
         super(x, y, width, height);
         this.sprite = new Image();
         this.sprite.src = "./sprites/bullet.png";
-        this.xVelocity = Math.cos(player.angle) * 20;
-        this.yVelocity = Math.sin(player.angle) * 20;
+        this.xVelocity = Math.cos(player.angle) * 10;
+        this.yVelocity = Math.sin(player.angle) * 10;
     }
 
     update(){
