@@ -8,8 +8,8 @@ class Enemy extends Entity{
 
     update(){
         super.update();
-        let angle = -Math.atan2(player.y - this.y, player.x, this.x);
-        this.xVelocity = Math.cos(angle) * 1.5;
-        this.yVelocity = -Math.sin(angle) * 1.5;
+        let angle = -Math.atan2(player.y - player.height - this.y, player.x - player.width - this.x);
+        this.xVelocity = Math.cos(angle) * 1;
+        this.yVelocity = -Math.sin(angle) * 1;
     }
 }
