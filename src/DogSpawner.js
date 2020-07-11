@@ -1,13 +1,13 @@
 class DogSpawner{
 
     constructor(){
-        this.cooldown = 10;
-        this.dogSpeed = 2;
+        this.cooldown = 120;
+        this.dogSpeed = 1;
     }
 
     update(){
         if(this.cooldown <= 0){
-            this.cooldown = 10;
+            this.cooldown = 120;
             this.spawnDog()
         }
         this.cooldown --;

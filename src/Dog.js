@@ -19,8 +19,8 @@ class Dog extends Entity{
                 this.x + this.width > player.bullets[i].x &&
                 this.y < player.bullets[i].y + player.bullets[i].height &&
                 this.y + this.height > player.bullets[i].y){
-                // enemies.splice(this, 1);
-                // player.bullets.splice(i, 1);
+                dogs.splice(this, 1);
+                player.bullets.splice(i, 1);
             }
         }
     }
