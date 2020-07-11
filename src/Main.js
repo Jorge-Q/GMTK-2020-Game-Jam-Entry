@@ -27,7 +27,6 @@ function update(){
 function render(){
     graphics.clearRect(0, 0, frame.width, frame.height);
     player.render()
-    graphics.fillRect(0, 0, 10, 10)
 }
 
 // Handle Mouse Input

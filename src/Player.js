@@ -21,17 +21,17 @@ class Player extends Entity{
             this.xVelocity = -this.xVelocity;
             this.x = frame.width;
         }
-        if(this.x < 0){
+        if(this.x < this.width){
             this.xVelocity = -this.xVelocity;
-            this.x = 0;
+            this.x = this.width;
         }
         if(this.y > frame.height){
             this.yVelocity = -this.yVelocity;
             this.y = frame.height;
         }
-        if(this.y < 0){
+        if(this.y < this.height){
             this.yVelocity = -this.yVelocity;
-            this.y = 0;
+            this.y = this.height;
         }
     }
 
@@ -53,5 +53,7 @@ class Player extends Entity{
         for(let i = 0; i < this.bullets.length; i++){
             this.bullets[i].render()
         }
+
+        graphics.fillRect(this.x, this.y, 10, 10)
     }
 }
