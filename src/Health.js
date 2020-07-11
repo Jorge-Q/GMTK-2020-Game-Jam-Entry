@@ -14,6 +14,12 @@ class Health{
         this.currentHealth = 3;
     }
 
+    update(){
+        if(this.currentHealth <= 0){
+            playing = false;
+        }
+    }
+
     render(){
         for(let i = 0; i < this.hitPoints; i++){
             if(i < this.currentHealth){
@@ -24,5 +30,4 @@ class Health{
             }
         }
     }
-
 }
