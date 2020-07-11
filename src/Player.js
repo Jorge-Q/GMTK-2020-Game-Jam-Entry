@@ -8,11 +8,21 @@ class Player extends Entity{
 
     update(){
         super.update();
+        this.angle = Math.atan2(mouse.y - (this.y - this.height / 2), mouse.x - (this.x - this.width / 2));
     }
 
     shoot(){
-        let angle = Math.atan2(mouse.y - (this.y - this.height / 2), mouse.x - (this.x - this.width / 2));
-        this.xVelocity = -Math.cos(angle) * 20;
-        this.yVelocity = -Math.sin(angle) * 20;
+        this.xVelocity = -Math.cos(this.angle) * 20;
+        this.yVelocity = -Math.sin(this.angle) * 20;
+    }
+
+    render(){
+        // Rotate player to follow mouse
+        graphics.save();
+        graphics.translate(this.x - this.width / 2, this.y - this.height / 2);
+        graphics.rotate(this.angle);
+        graphics.translate(-this.x - this.width / 2, -this.y - this.height / 2);
+        super.render();
+        graphics.restore();
     }
 }

@@ -1,5 +1,6 @@
 let frame = document.getElementById("frame");
-let graphic = frame.getContext("2d");
+let graphics = frame.getContext("2d");
+graphics.imageSmoothingEnabled = false;
 
 let sprite = new Image();
 sprite.src = "./sprites/mario.png";
@@ -9,7 +10,7 @@ let x_speed = 5;
 let y = 0;
 let y_speed = 10;
 
-let player = new Player(50, 50, 50, 50);
+let player = new Player(100, 100, 50, 50);
 
 let mouse = {
     x: 0,
@@ -63,7 +64,7 @@ frame.addEventListener("mouseup", (event)=>{
 });
 
 function render(){
-    graphic.clearRect(0, 0, frame.width, frame.height);
-    graphic.drawImage(sprite, x, y, 20, 20);
+    graphics.clearRect(0, 0, frame.width, frame.height);
+    graphics.drawImage(sprite, x, y, 20, 20);
     player.render()
 }
