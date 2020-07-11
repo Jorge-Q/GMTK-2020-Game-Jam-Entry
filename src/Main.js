@@ -14,6 +14,8 @@ let mouse = {
 };
 
 let enemies = [];
+let dogs = [];
+let dogSpawner = new DogSpawner();
 let spawner = new EnemySpawner(300, 300, 50, 25);
 
 window.onload = ()=>{
@@ -28,10 +30,14 @@ function gameLoop(){
 
 function update(){
     spawner.update();
+    dogSpawner.update();
     player.update();
     gun.update();
     for(let i = 0; i < enemies.length; i++){
         enemies[i].update()
+    }
+    for(let i = 0; i < dogs.length; i++){
+        dogs[i].update()
     }
 }
 
@@ -43,6 +49,9 @@ function render(){
     gun.render();
     for(let i = 0; i < enemies.length; i++){
         enemies[i].render()
+    }
+    for(let i = 0; i < dogs.length; i++){
+        dogs[i].render()
     }
 }
 

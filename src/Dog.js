@@ -1,17 +1,16 @@
 class Dog extends Entity{
 
-    constructor(x, y, width, height){
+    constructor(x, y, width, height, xVelocity, yVelocity){
         super(x, y, width, height);
         this.sprite = new Image();
         this.sprite.src = "./sprites/dog1.png";
+        this.xVelocity = xVelocity;
+        this.yVelocity = yVelocity;
     }
 
     update(){
-        super.update();
-        let angle = -Math.atan2(player.y - player.height - this.y, player.x - player.width - this.x);
-        this.xVelocity = Math.cos(angle) * .75;
-        this.yVelocity = -Math.sin(angle) * .75;
         this.checkBulletCollision();
+        super.update();
     }
 
     checkBulletCollision(){
@@ -20,8 +19,8 @@ class Dog extends Entity{
                 this.x + this.width > player.bullets[i].x &&
                 this.y < player.bullets[i].y + player.bullets[i].height &&
                 this.y + this.height > player.bullets[i].y){
-                enemies.splice(this, 1);
-                player.bullets.splice(i, 1);
+                // enemies.splice(this, 1);
+                // player.bullets.splice(i, 1);
             }
         }
     }
