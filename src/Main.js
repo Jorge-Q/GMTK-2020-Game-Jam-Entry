@@ -3,9 +3,11 @@ let graphic = frame.getContext("2d");
 
 let sprite = new Image();
 sprite.src = "./sprites/mario.png";
+let player = new Image();
+player.src = "./sprites/bald_orange.png";
 
 let x = 0;
-let x_speed = 10;
+let x_speed = 5;
 let y = 0;
 let y_speed = 10;
 
@@ -38,5 +40,6 @@ function update(){
 
 function render(){
     graphic.clearRect(0, 0, frame.width, frame.height);
-    graphic.drawImage(sprite, x, 100, 20, 20);
+    graphic.drawImage(sprite, x, y, 20, 20);
+    graphic.drawImage(player,0, 0,50,50);
 }
