@@ -21,14 +21,13 @@ let dogSpawner = new DogSpawner();
 let spawner = new EnemySpawner(300, 300, 50, 25);
 
 window.onload = ()=>{
-    requestAnimationFrame(gameLoop)
+    setInterval(()=>{
+        update();
+        render();
+    }, 1000 / 60);
 }
 
-function gameLoop(){
-    update()
-    render()
-    requestAnimationFrame(gameLoop)
-}
+
 
 function update(){
     spawner.update();
