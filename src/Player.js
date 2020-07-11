@@ -63,7 +63,7 @@ class Player extends Entity{
     shoot(){
         this.xVelocity = -Math.cos(this.angle) * 5;
         this.yVelocity = -Math.sin(this.angle) * 5;
-        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 20, 10, 10));
+        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 10, 8, 8));
     }
 
     render(){

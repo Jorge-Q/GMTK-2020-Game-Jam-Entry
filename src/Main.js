@@ -2,8 +2,11 @@ let frame = document.getElementById("frame");
 let graphics = frame.getContext("2d");
 graphics.imageSmoothingEnabled = false;
 
-let player = new Player(50, 50, 50, 50);
-let gun = new Gun(player.x, player.y, 50, 25);
+let background = new Image();
+background.src = "./sprites/background.png";
+
+let player = new Player(50, 50, 28, 30);
+let gun = new Gun(player.x, player.y, 22, 10);
 let mouse = {
     x: 0,
     y: 0,
@@ -35,6 +38,7 @@ function update(){
 function render(){
     spawner.render();
     graphics.clearRect(0, 0, frame.width, frame.height);
+    graphics.drawImage(background, 0, 0, frame.width, frame.height);
     player.render();
     gun.render();
     for(let i = 0; i < enemies.length; i++){

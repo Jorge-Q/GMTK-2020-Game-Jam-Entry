@@ -8,7 +8,7 @@ class Gun extends Entity{
 
     update(){
         this.x = (this.width / 2) + (player.x + player.width / 2);
-        this.y = (this.height / 2) + (player.y + player.height / 2) + 20;
+        this.y = (this.height / 2) + (player.y + player.height / 2) + 10;
     }
 
     render(){
