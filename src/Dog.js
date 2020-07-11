@@ -9,8 +9,11 @@ class Dog extends Entity{
     }
 
     update(){
-        this.checkBulletCollision();
         super.update();
+        if(this.x > frame.width + 50 || this.x < -50 || this.y > frame.height + 50 || this.y < -50){
+            dogs.splice(this, 1);
+        }
+        this.checkBulletCollision();
     }
 
     checkBulletCollision(){
@@ -19,6 +22,7 @@ class Dog extends Entity{
                 this.x + this.width > player.bullets[i].x &&
                 this.y < player.bullets[i].y + player.bullets[i].height &&
                 this.y + this.height > player.bullets[i].y){
+                health.currentHealth -= 1;
                 dogs.splice(this, 1);
                 player.bullets.splice(i, 1);
             }
