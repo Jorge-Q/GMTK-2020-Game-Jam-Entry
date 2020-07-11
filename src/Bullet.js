@@ -6,6 +6,5 @@ class Bullet extends Entity{
         this.sprite.src = "./sprites/mario.png";
         this.xVelocity = Math.cos(player.angle) * 20;
         this.yVelocity = Math.sin(player.angle) * 20;
-        console.log(player.angle)
     }
 }
