@@ -24,17 +24,17 @@ class Player extends Entity{
             this.bullets[i].update()
         }
 
-        if(this.x > frame.width){
+        if(this.x > frame.width - this.width){
             this.xVelocity = -this.xVelocity;
-            this.x = frame.width;
+            this.x = frame.width - this.width;
         }
         if(this.x < 0){
             this.xVelocity = -this.xVelocity;
             this.x = 0;
         }
-        if(this.y > frame.height){
+        if(this.y > frame.height - this.height){
             this.yVelocity = -this.yVelocity;
-            this.y = frame.height;
+            this.y = frame.height - this.height;
         }
         if(this.y < 0){
             this.yVelocity = -this.yVelocity;
