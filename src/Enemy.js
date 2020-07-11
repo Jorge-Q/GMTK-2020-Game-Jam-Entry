@@ -3,7 +3,7 @@ class Enemy extends Entity{
     constructor(x, y, width, height){
         super(x, y, width, height);
         this.sprite = new Image();
-        this.sprite.src = "./sprites/mario.png";
+        this.sprite.src = "./sprites/alien1.png";
     }
 
     update(){

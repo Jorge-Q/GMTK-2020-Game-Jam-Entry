@@ -3,7 +3,7 @@ class Player extends Entity{
     constructor(x, y, width, height){
         super(x, y, width, height);
         this.sprite = new Image();
-        this.sprite.src = "./sprites/bald_orange.png";
+        this.sprite.src = "./sprites/player.png";
         this.bullets = [];
 
         this.totalBullets = 5;
@@ -16,7 +16,7 @@ class Player extends Entity{
 
     update(){
         super.update();
-        this.angle = Math.atan2(mouse.y - (this.y - this.height / 2), mouse.x - (this.x - this.width / 2));
+        this.angle = Math.atan2(mouse.y - (this.y + this.height / 2), mouse.x - (this.x + this.width / 2));
         this.xVelocity *= 0.80;
         this.yVelocity *= 0.80;
 
@@ -28,17 +28,17 @@ class Player extends Entity{
             this.xVelocity = -this.xVelocity;
             this.x = frame.width;
         }
-        if(this.x < this.width){
+        if(this.x < 0){
             this.xVelocity = -this.xVelocity;
-            this.x = this.width;
+            this.x = 0;
         }
         if(this.y > frame.height){
             this.yVelocity = -this.yVelocity;
             this.y = frame.height;
         }
-        if(this.y < this.height){
+        if(this.y < 0){
             this.yVelocity = -this.yVelocity;
-            this.y = this.height;
+            this.y = 0;
         }
 
         if(this.currentBullets >= 0){
@@ -63,20 +63,13 @@ class Player extends Entity{
     shoot(){
         this.xVelocity = -Math.cos(this.angle) * 5;
         this.yVelocity = -Math.sin(this.angle) * 5;
-        this.bullets.push(new Bullet(this.x - this.width / 2, this.y - this.height / 2, 10, 10));
+        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 20, 10, 10));
     }
 
     render(){
-        // Rotate player to follow mouse
-        graphics.save();
-        graphics.translate(this.x - this.width / 2, this.y - this.height / 2);
-        graphics.rotate(this.angle);
-        graphics.translate(-this.x - this.width / 2, -this.y - this.height / 2);
-        super.render();
-        graphics.restore();
-
         for(let i = 0; i < this.bullets.length; i++){
             this.bullets[i].render()
         }
+        super.render();
     }
 }
