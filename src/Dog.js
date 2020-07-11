@@ -1,7 +1,8 @@
 class Dog extends Entity{
 
-    constructor(x, y, width, height, xVelocity, yVelocity){
+    constructor(id, x, y, width, height, xVelocity, yVelocity){
         super(x, y, width, height);
+        this.id = id;
         this.sprite = new Image();
         this.sprite.src = "./sprites/dog1.png";
         this.xVelocity = xVelocity;
@@ -23,8 +24,10 @@ class Dog extends Entity{
                 this.y < player.bullets[i].y + player.bullets[i].height &&
                 this.y + this.height > player.bullets[i].y){
                 health.currentHealth -= 1;
-                dogs.splice(this, 1);
+                let index = dogs.findIndex(element => element.id == this.id);
+                dogs.splice(index, 1);
                 player.bullets.splice(i, 1);
+                score -= 5;
             }
         }
     }

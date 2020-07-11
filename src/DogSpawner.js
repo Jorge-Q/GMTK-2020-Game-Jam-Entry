@@ -29,6 +29,6 @@ class DogSpawner{
             yVelocity = this.dogSpeed;
         }
 
-        dogs.push(new Dog(xSelected, ySelected, 24, 20, xVelocity[this.getRandomInt(2)], yVelocity));
+        dogs.push(new Dog(getId(), xSelected, ySelected, 24, 20, xVelocity[this.getRandomInt(2)], yVelocity));
     }
 }

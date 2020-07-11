@@ -6,7 +6,7 @@ class Player extends Entity{
         this.sprite.src = "./sprites/player.png";
         this.bullets = [];
 
-        this.totalBullets = 5;
+        this.totalBullets = 3;
         this.currentBullets = this.totalBullets;
 
         this.reloadTimer = 0;
@@ -17,8 +17,8 @@ class Player extends Entity{
     update(){
         super.update();
         this.angle = Math.atan2(mouse.y - (this.y + this.height / 2), mouse.x - (this.x + this.width / 2));
-        this.xVelocity *= 0.80;
-        this.yVelocity *= 0.80;
+        this.xVelocity *= .97;
+        this.yVelocity *= .97;
 
         for(let i = 0; i < this.bullets.length; i++){
             this.bullets[i].update()
@@ -41,7 +41,7 @@ class Player extends Entity{
             this.y = 0;
         }
 
-        if(this.currentBullets >= 0){
+        if(this.currentBullets > 0){
             if(this.bulletDelay >= 5){
                 this.shoot();
                 this.currentBullets --;
