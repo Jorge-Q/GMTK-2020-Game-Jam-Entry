@@ -5,6 +5,13 @@ class Player extends Entity{
         this.sprite = new Image();
         this.sprite.src = "./sprites/bald_orange.png";
         this.bullets = [];
+
+        this.totalBullets = 5;
+        this.currentBullets = this.totalBullets;
+
+        this.reloadTimer = 0;
+
+        this.bulletDelay = 60;
     }
 
     update(){
@@ -33,11 +40,29 @@ class Player extends Entity{
             this.yVelocity = -this.yVelocity;
             this.y = this.height;
         }
+
+        if(this.currentBullets >= 0){
+            if(this.bulletDelay >= 5){
+                this.shoot();
+                this.currentBullets --;
+                this.bulletDelay = 0;
+            }
+            else{
+                this.bulletDelay ++;
+            }
+        }
+        else{
+            if(this.reloadTimer >= 60){
+                this.reloadTimer = 0;
+                this.currentBullets = this.totalBullets;
+            }
+            this.reloadTimer ++;
+        }
     }
 
     shoot(){
-        this.xVelocity = -Math.cos(this.angle) * 20;
-        this.yVelocity = -Math.sin(this.angle) * 20;
+        this.xVelocity = -Math.cos(this.angle) * 5;
+        this.yVelocity = -Math.sin(this.angle) * 5;
         this.bullets.push(new Bullet(this.x - this.width / 2, this.y - this.height / 2, 10, 10));
     }
 
@@ -53,7 +78,5 @@ class Player extends Entity{
         for(let i = 0; i < this.bullets.length; i++){
             this.bullets[i].render()
         }
-
-        graphics.fillRect(this.x, this.y, 10, 10)
     }
 }

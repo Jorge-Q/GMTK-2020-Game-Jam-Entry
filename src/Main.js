@@ -10,6 +10,8 @@ let mouse = {
     pressed: false
 };
 
+let enemy1 = new Enemy(100, 100, 50, 50);
+
 window.onload = ()=>{
     requestAnimationFrame(gameLoop)
 }
@@ -22,11 +24,13 @@ function gameLoop(){
 
 function update(){
     player.update();
+    enemy1.update();
 }
 
 function render(){
     graphics.clearRect(0, 0, frame.width, frame.height);
-    player.render()
+    player.render();
+    enemy1.render();
 }
 
 // Handle Mouse Input
