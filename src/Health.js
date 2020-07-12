@@ -20,6 +20,11 @@ class Health{
         }
     }
 
+    damage(){
+        this.currentHealth -= 1;
+        new Audio("./sounds/hurtSound.wav").play();
+    }
+
     render(){
         for(let i = 0; i < this.hitPoints; i++){
             if(i < this.currentHealth){
