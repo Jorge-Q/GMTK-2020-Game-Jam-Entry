@@ -81,7 +81,7 @@ function render(){
     if(!playing){
         graphics.drawImage(darkScreen, 0, 0, frame.width, frame.height);
         graphics.drawImage(gameOver, 0, 0, frame.width, frame.height);
-        drawText("CLICK TO PLAY AGAIN", frame.width / 2, frame.height / 2);
+        drawText("CLICK TO PLAY AGAIN", frame.width / 2 - 100, frame.height / 2);
         drawText("SCORE: " + score.toString(), frame.width / 2 - 40, frame.height / 2 + 50);
     }
 }
