@@ -1,22 +1,47 @@
-class Shotgun extends Entity{
+class Shotgun extends Gun{
 
     constructor(x, y, width, height){
-        super(x, y, width, height);
+        super(x, y, width, height)
         this.sprite = new Image();
-        this.sprite.src = "./sprites/gun.png";
+        this.sprite.src = "./sprites/Shotgun.png";
+        this.currentBullets = this.totalBullets;
+        this.totalBullets = 3;
+        this.reloadTimer = 0;
+        this.fireRate = 60;
+        this.bulletDelay = 0;
+        this.bullets= [];
+        
     }
 
+    //Function to update gun's bullets being shot p/s.
     update(){
-        this.x = (this.width / 2) + (player.x + player.width / 2);
-        this.y = (this.height / 2) + (player.y + player.height / 2) + 10;
+        super.update();
+        //Trigger of bullets per seconds
+        if(this.currentBullets > 0){
+            if(this.bulletDelay >= 5){
+                this.shoot();
+                this.currentBullets --;
+                this.bulletDelay = 0;
+            }
+            else{
+                this.bulletDelay ++;
+            }
+        }
+        else{
+            if(this.reloadTimer >= 60){
+                this.reloadTimer = 0;
+                this.currentBullets = this.totalBullets;
+            }
+            this.reloadTimer ++;
+        }
     }
 
-    render(){
-        graphics.save();
-        graphics.translate(this.x - this.width / 2, this.y - this.height / 2);
-        graphics.rotate(player.angle);
-        graphics.translate(-this.x - this.width / 2, -this.y - this.height / 2);
-        super.render();
-        graphics.restore();
+    //Function that adds a bullet to the bullet list & adds player knockback
+    shoot(){
+        console.log('wadapbitches');
+        player.xVelocity = -Math.cos(this.angle) * 5;
+        player.yVelocity = -Math.sin(this.angle) * 5;
+        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 10, 8, 8));
     }
+
 }

@@ -14,7 +14,7 @@ class Dog extends Entity{
         if(this.x > frame.width + 50 || this.x < -50 || this.y > frame.height + 50 || this.y < -50){
             dogs.splice(this, 1);
         }
-        this.checkBulletCollision();
+        //this.checkBulletCollision();
     }
 
     checkBulletCollision(){
