@@ -1,10 +1,10 @@
-class Shotgun extends Gun{
+class Pistol extends Gun{
 
     constructor(x, y, width, height){
         super(x, y, width, height)
         this.sprite = new Image();
-        this.sprite.src = "./sprites/Shotgun.png";
-        this.totalBullets = 1;
+        this.sprite.src = "./sprites/Pistol.png";
+        this.totalBullets = 3;
         this.currentBullets = this.totalBullets;
         this.reloadTimer = 0;
         this.bulletDelay = 0;
@@ -37,28 +37,14 @@ class Shotgun extends Gun{
 
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
-        player.xVelocity = -Math.cos(player.angle) * 10;
-        player.yVelocity = -Math.sin(player.angle) * 10;
-        this.bullets.push(new Bullet(
-            this.x + this.width / 2, 
-            (this.y + this.height / 2) + 20, 
-            8, 8,
-            Math.cos(player.angle - .1) * 10,
-            Math.sin(player.angle - .1) * 10,
-        ));
+        player.xVelocity = -Math.cos(player.angle) * 5;
+        player.yVelocity = -Math.sin(player.angle) * 5;
         this.bullets.push(new Bullet(
             this.x + this.width / 2, 
             (this.y + this.height / 2) + 20, 
             8, 8,
             Math.cos(player.angle) * 10,
             Math.sin(player.angle) * 10,
-        ));
-        this.bullets.push(new Bullet(
-            this.x + this.width / 2, 
-            (this.y + this.height / 2) + 20, 
-            8, 8,
-            Math.cos(player.angle + .1) * 10,
-            Math.sin(player.angle + .1) * 10,
         ));
     }
 

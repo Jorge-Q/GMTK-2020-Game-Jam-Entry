@@ -1,11 +1,11 @@
 class Bullet extends Entity{
 
-    constructor(x, y, width, height){
+    constructor(x, y, width, height, xVelocity, yVelocity){
         super(x, y, width, height);
         this.sprite = new Image();
         this.sprite.src = "./sprites/bullet.png";
-        this.xVelocity = Math.cos(player.angle) * 10;
-        this.yVelocity = Math.sin(player.angle) * 10;
+        this.xVelocity = xVelocity;
+        this.yVelocity = yVelocity;
     }
 
     update(){

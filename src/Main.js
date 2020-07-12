@@ -15,7 +15,7 @@ var snd = new Audio("./sounds/main_theme.wav");
 
 let player;
 let health;
-
+let pedestal;
 let gun;
 let mouse = {
     x: 0,
@@ -44,6 +44,7 @@ function onCreate(){
     snd.play();
     player = new Player(200, 200, 28, 30);
     health = new Health(20, 20, 30, 24);
+    pedestal = new Pedestal(frame.width / 2 - 13, frame.height / 2 - 8, 26, 16);
     dogSpawner = new DogSpawner();
     score = 0;
     enemies = [];
@@ -61,6 +62,7 @@ function update(){
         dogSpawner.update();
         player.update();
         health.update();
+        pedestal.update();
         enemies.forEach(enemy => enemy.update());
         dogs.forEach(dog => dog.update());
     }
@@ -69,6 +71,7 @@ function update(){
 function render(){
     graphics.clearRect(0, 0, frame.width, frame.height);
     graphics.drawImage(background, 0, 0, frame.width, frame.height);
+    pedestal.render();
     player.render();
     enemies.forEach(enemy => enemy.render());
     dogs.forEach(dog => dog.render());

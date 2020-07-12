@@ -4,7 +4,7 @@ class Player extends Entity{
         super(x, y, width, height);
         this.sprite = new Image();
         this.sprite.src = "./sprites/player.png";
-        this.currentGun = new Shotgun(this.x, this.y, 22, 10);
+        this.currentGun = new Pistol(this.x, this.y, 22, 10);
     }
 
     update(){
