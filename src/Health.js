@@ -22,6 +22,7 @@ class Health{
 
     damage(){
         this.currentHealth -= 1;
+        new Audio("./sounds/hurtSound.wav").play();
     }
 
     render(){
