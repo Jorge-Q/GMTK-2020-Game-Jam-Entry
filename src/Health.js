@@ -16,6 +16,7 @@ class Health{
 
     update(){
         if(this.currentHealth <= 0){
+            new Audio("./sounds/deathSound.wav").play();
             playing = false;
         }
     }
