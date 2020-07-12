@@ -11,7 +11,7 @@ class Bullet extends Entity{
     update(){
         super.update();
         if(this.x > frame.width || this.x < 0 || this.y > frame.height || this.y < 0){
-            player.bullets.splice(this, 1);
+            player.currentGun.bullets.splice(this, 1);
         }
     }
 }

@@ -25,7 +25,7 @@ class Enemy extends Entity{
         let angle = -Math.atan2(player.y - this.y, player.x - this.x);
         this.xVelocity = Math.cos(angle) * .75;
         this.yVelocity = -Math.sin(angle) * .75;
-        this.checkBulletCollision();
+        //this.checkBulletCollision();
         this.checkPlayercollision();
         this.updateDirection();
         if(this.animationTimer >= 12){
