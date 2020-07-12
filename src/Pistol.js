@@ -1,5 +1,5 @@
 class Pistol extends Gun{
-
+    
     constructor(x, y, width, height){
         super(x, y, width, height)
         this.sprite = new Image();
@@ -9,7 +9,6 @@ class Pistol extends Gun{
         this.reloadTimer = 0;
         this.bulletDelay = 0;
         this.bullets= [];
-        
     }
 
     //Function to update gun's bullets being shot p/s.
@@ -37,6 +36,7 @@ class Pistol extends Gun{
 
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
+        new Audio("./sounds/pistolSound.wav").play();
         player.xVelocity = -Math.cos(player.angle) * 5;
         player.yVelocity = -Math.sin(player.angle) * 5;
         this.bullets.push(new Bullet(
