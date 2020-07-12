@@ -2,5 +2,5 @@
 'No Control Game' Entry
 Team: 
 Ivan Motta
-Jorge Quinones
+Jorge Quinonez
 Mario Valadez
