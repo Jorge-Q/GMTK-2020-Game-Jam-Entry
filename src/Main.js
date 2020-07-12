@@ -44,7 +44,6 @@ function onCreate(){
     snd.play();
     player = new Player(200, 200, 28, 30);
     health = new Health(20, 20, 30, 24);
-    gun = new Gun(player.x, player.y, 22, 10);
     dogSpawner = new DogSpawner();
     score = 0;
     enemies = [];
@@ -61,7 +60,6 @@ function update(){
         spawners.forEach(spawn => spawn.update());
         dogSpawner.update();
         player.update();
-        gun.update();
         health.update();
         enemies.forEach(enemy => enemy.update());
         dogs.forEach(dog => dog.update());
@@ -72,7 +70,6 @@ function render(){
     graphics.clearRect(0, 0, frame.width, frame.height);
     graphics.drawImage(background, 0, 0, frame.width, frame.height);
     player.render();
-    gun.render();
     enemies.forEach(enemy => enemy.render());
     dogs.forEach(dog => dog.render());
     spawners.forEach(spawn => spawn.render());
