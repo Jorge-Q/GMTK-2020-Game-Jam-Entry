@@ -4,14 +4,7 @@ class Player extends Entity{
         super(x, y, width, height);
         this.sprite = new Image();
         this.sprite.src = "./sprites/player.png";
-        this.bullets = [];
-
-        this.totalBullets = 3;
-        this.currentBullets = this.totalBullets;
-
-        this.reloadTimer = 0;
-
-        this.bulletDelay = 60;
+        this.currentGun = new Shotgun(this.x, this.y, 22, 10);
     }
 
     update(){
@@ -20,10 +13,7 @@ class Player extends Entity{
         this.xVelocity *= .97;
         this.yVelocity *= .97;
 
-        for(let i = 0; i < this.bullets.length; i++){
-            this.bullets[i].update()
-        }
-
+        //Border for frame
         if(this.x > frame.width - this.width){
             this.xVelocity = -this.xVelocity;
             this.x = frame.width - this.width;
@@ -40,36 +30,12 @@ class Player extends Entity{
             this.yVelocity = -this.yVelocity;
             this.y = 0;
         }
-
-        if(this.currentBullets > 0){
-            if(this.bulletDelay >= 5){
-                this.shoot();
-                this.currentBullets --;
-                this.bulletDelay = 0;
-            }
-            else{
-                this.bulletDelay ++;
-            }
-        }
-        else{
-            if(this.reloadTimer >= 60){
-                this.reloadTimer = 0;
-                this.currentBullets = this.totalBullets;
-            }
-            this.reloadTimer ++;
-        }
-    }
-
-    shoot(){
-        this.xVelocity = -Math.cos(this.angle) * 5;
-        this.yVelocity = -Math.sin(this.angle) * 5;
-        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 10, 8, 8));
+        this.currentGun.update();
     }
 
     render(){
-        for(let i = 0; i < this.bullets.length; i++){
-            this.bullets[i].render()
-        }
-        super.render();
+        super.render()
+        this.currentGun.render()
     }
+
 }
