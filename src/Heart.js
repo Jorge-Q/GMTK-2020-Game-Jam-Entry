@@ -13,6 +13,7 @@ class Heart extends Entity{
             this.y < player.y + player.height &&
             this.y + this.height > player.y){
             if(health.currentHealth < 3 ){
+                new Audio("./sounds/pickup2Sound.wav").play();
                 health.currentHealth += 1;
             }
             let index = hearts.findIndex(element => element.id == this.id);

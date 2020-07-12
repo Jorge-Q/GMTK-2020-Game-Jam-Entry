@@ -83,7 +83,7 @@ function render() {
     graphics.clearRect(0, 0, frame.width, frame.height);
     if (displaySplash) {
         graphics.drawImage(splash, 0, 0, frame.width, frame.height);
-        drawText("CLICK TO PLAY", frame.width / 2, frame.height / 2, 40);
+        drawText("CLICK TO PLAY", frame.width / 2 -80, frame.height / 2 -80, 60);
         return;
     }
     graphics.drawImage(background, 0, 0, frame.width, frame.height);
