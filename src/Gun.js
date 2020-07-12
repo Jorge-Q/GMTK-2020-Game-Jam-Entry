@@ -7,8 +7,8 @@ class Gun extends Entity{
 
     update(){
         //Update the position of the gun (same rate as player)
-        this.x = (this.width / 2) + (player.x + player.width / 2);
-        this.y = (this.height / 2) + (player.y + player.height / 2) + 10;
+        this.x = player.x;
+        this.y = player.y;
         //Update bullets to move its trajectory
         for(let i = 0; i < this.bullets.length; i++){
             this.bullets[i].update()
@@ -17,10 +17,9 @@ class Gun extends Entity{
 
     render(){
         graphics.save();
-        graphics.translate(this.x - this.width / 2, this.y - this.height / 2);
+        graphics.translate(this.x + this.width / 2 + 5, this.y + this.height / 2 + 20);
         graphics.rotate(player.angle);
-        graphics.translate(-this.x - this.width / 2, -this.y - this.height / 2);
-        super.render();
+        graphics.drawImage(this.sprite, -this.width / 2, -this.height / 2, this.width, this.height);
         graphics.restore();
         //Render the bullet trajectory
         for(let i = 0; i < this.bullets.length; i++){

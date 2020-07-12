@@ -12,21 +12,22 @@ class Dog extends Entity{
     update(){
         super.update();
         if(this.x > frame.width + 50 || this.x < -50 || this.y > frame.height + 50 || this.y < -50){
-            dogs.splice(this, 1);
+            let index = dogs.findIndex(element => element.id == this.id);
+            dogs.splice(index, 1);
         }
-        //this.checkBulletCollision();
+        this.checkBulletCollision();
     }
 
     checkBulletCollision(){
-        for(let i = 0; i < player.bullets.length; i++){
-            if(this.x < player.bullets[i].x + player.bullets[i].width &&
-                this.x + this.width > player.bullets[i].x &&
-                this.y < player.bullets[i].y + player.bullets[i].height &&
-                this.y + this.height > player.bullets[i].y){
+        for(let i = 0; i < player.currentGun.bullets.length; i++){
+            if(this.x < player.currentGun.bullets[i].x + player.currentGun.bullets[i].width &&
+                this.x + this.width > player.currentGun.bullets[i].x &&
+                this.y < player.currentGun.bullets[i].y + player.currentGun.bullets[i].height &&
+                this.y + this.height > player.currentGun.bullets[i].y){
                 health.currentHealth -= 1;
                 let index = dogs.findIndex(element => element.id == this.id);
                 dogs.splice(index, 1);
-                player.bullets.splice(i, 1);
+                player.currentGun.bullets.splice(i, 1);
                 score -= 5;
             }
         }

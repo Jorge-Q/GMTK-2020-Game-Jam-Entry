@@ -4,8 +4,8 @@ class Shotgun extends Gun{
         super(x, y, width, height)
         this.sprite = new Image();
         this.sprite.src = "./sprites/Shotgun.png";
-        this.currentBullets = this.totalBullets;
         this.totalBullets = 3;
+        this.currentBullets = this.totalBullets;
         this.reloadTimer = 0;
         this.fireRate = 60;
         this.bulletDelay = 0;
@@ -38,10 +38,9 @@ class Shotgun extends Gun{
 
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
-        console.log('wadapbitches');
-        player.xVelocity = -Math.cos(this.angle) * 5;
-        player.yVelocity = -Math.sin(this.angle) * 5;
-        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 10, 8, 8));
+        player.xVelocity = -Math.cos(player.angle) * 5;
+        player.yVelocity = -Math.sin(player.angle) * 5;
+        this.bullets.push(new Bullet(this.x + this.width / 2, (this.y + this.height / 2) + 20, 8, 8));
     }
 
 }

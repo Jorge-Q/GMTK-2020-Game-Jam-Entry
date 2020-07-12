@@ -25,7 +25,7 @@ class Enemy extends Entity{
         let angle = -Math.atan2(player.y - this.y, player.x - this.x);
         this.xVelocity = Math.cos(angle) * .75;
         this.yVelocity = -Math.sin(angle) * .75;
-        //this.checkBulletCollision();
+        this.checkBulletCollision();
         this.checkPlayercollision();
         this.updateDirection();
         if(this.animationTimer >= 12){
@@ -36,14 +36,14 @@ class Enemy extends Entity{
     }
 
     checkBulletCollision(){
-        for(let i = 0; i < player.bullets.length; i++){
-            if(this.x < player.bullets[i].x + player.bullets[i].width &&
-                this.x + this.width > player.bullets[i].x &&
-                this.y < player.bullets[i].y + player.bullets[i].height &&
-                this.y + this.height > player.bullets[i].y){
+        for(let i = 0; i < player.currentGun.bullets.length; i++){
+            if(this.x < player.currentGun.bullets[i].x + player.currentGun.bullets[i].width &&
+                this.x + this.width > player.currentGun.bullets[i].x &&
+                this.y < player.currentGun.bullets[i].y + player.currentGun.bullets[i].height &&
+                this.y + this.height > player.currentGun.bullets[i].y){
                 let index = enemies.findIndex(element => element.id == this.id);
                 enemies.splice(index, 1);
-                player.bullets.splice(i, 1);
+                player.currentGun.bullets.splice(i, 1);
                 score += 10;
             }
         }
