@@ -54,7 +54,7 @@ class Enemy extends Entity{
             this.x + this.width > player.x &&
             this.y < player.y + player.height &&
             this.y + this.height > player.y){
-            health.currentHealth -= 1;
+            health.damage();
             let index = enemies.findIndex(element => element.id == this.id);
             enemies.splice(index, 1);
         }
