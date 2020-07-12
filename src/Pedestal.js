@@ -8,8 +8,8 @@ class Pedestal extends Entity {
         this.gunSpawnTimer = 0;
         this.gunOptions = ["SHOTGUN", "PISTOL", "RIFFLE"];
 
-        this.riffleSprite = new Image();
-        this.riffleSprite.src = "./sprites/Riffle.png";
+        this.rifleSprite = new Image();
+        this.rifleSprite.src = "./sprites/Rifle.png";
         this.pistolSprite = new Image();
         this.pistolSprite.src = "./sprites/Pistol.png";
         this.shotgunSprite = new Image();
@@ -36,8 +36,8 @@ class Pedestal extends Entity {
         else if (this.gun == "PISTOL") {
             graphics.drawImage(this.pistolSprite, this.x, this.y - 8, 22, 10);
         }
-        else if (this.gun == "RIFFLE") {
-            graphics.drawImage(this.riffleSprite, this.x, this.y - 8, 22, 10);
+        else if (this.gun == "RIFLE") {
+            graphics.drawImage(this.rifleSprite, this.x, this.y - 8, 22, 10);
         }
     }
 
@@ -55,8 +55,8 @@ class Pedestal extends Entity {
                 else if (this.gun == "PISTOL") {
                     player.currentGun = new Pistol(this.x, this.y, 22, 10);
                 }
-                else if (this.gun == "RIFFLE") {
-                    player.currentGun = new Riffle(this.x, this.y, 22, 10);
+                else if (this.gun == "RIFLE") {
+                    player.currentGun = new Rifle(this.x, this.y, 22, 10);
                 }
                 this.gun = null;
             }

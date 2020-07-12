@@ -37,8 +37,8 @@ class Pistol extends Gun{
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
         new Audio("./sounds/pistolSound.wav").play();
-        player.xVelocity = -Math.cos(player.angle) * 5;
-        player.yVelocity = -Math.sin(player.angle) * 5;
+        player.xVelocity = -Math.cos(player.angle) * 3;
+        player.yVelocity = -Math.sin(player.angle) * 3;
         this.bullets.push(new Bullet(
             this.x + this.width / 2, 
             (this.y + this.height / 2) + 20, 
