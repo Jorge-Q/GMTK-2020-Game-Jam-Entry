@@ -24,6 +24,5 @@ class HealthSpawner{
 
     spawnHeart(x, y){
         hearts.push(new Heart(x, y, 15, 15));
-        console.log(hearts.length);
     }
 }
