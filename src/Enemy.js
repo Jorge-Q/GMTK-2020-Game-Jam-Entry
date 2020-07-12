@@ -28,7 +28,7 @@ class Enemy extends Entity{
         this.checkBulletCollision();
         this.checkPlayercollision();
         this.updateDirection();
-        if(this.animationTimer >= 12){
+        if(this.animationTimer >= 10){
             this.animationIndex = (this.animationIndex + 1) % 2;
             this.animationTimer = 0;
         }
