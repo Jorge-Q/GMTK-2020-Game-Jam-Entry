@@ -17,7 +17,7 @@ class Entity{
 
     render(){
         if(this.sprite != null){
-            graphics.drawImage(this.sprite, this.x, this.y, this.width, this.height)   
+            graphics.drawImage(this.sprite, this.x, this.y, this.width, this.height);  
         }
     }
 }
