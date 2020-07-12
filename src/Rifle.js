@@ -1,9 +1,9 @@
-class Riffle extends Gun{
+class Rifle extends Gun{
 
     constructor(x, y, width, height){
         super(x, y, width, height)
         this.sprite = new Image();
-        this.sprite.src = "./sprites/Riffle.png";
+        this.sprite.src = "./sprites/Rifle.png";
         this.totalBullets = 10;
         this.currentBullets = this.totalBullets;
         this.reloadTimer = 0;
