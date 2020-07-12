@@ -37,6 +37,7 @@ class Shotgun extends Gun{
 
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
+        new Audio("./sounds/shotGunSound.wav").play();
         player.xVelocity = -Math.cos(player.angle) * 10;
         player.yVelocity = -Math.sin(player.angle) * 10;
         this.bullets.push(new Bullet(

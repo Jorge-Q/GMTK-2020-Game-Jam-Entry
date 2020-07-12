@@ -20,6 +20,10 @@ class Health{
         }
     }
 
+    damage(){
+        this.currentHealth -= 1;
+    }
+
     render(){
         for(let i = 0; i < this.hitPoints; i++){
             if(i < this.currentHealth){

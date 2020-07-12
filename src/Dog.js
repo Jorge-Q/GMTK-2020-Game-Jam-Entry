@@ -45,7 +45,7 @@ class Dog extends Entity{
                 this.x + this.width > player.currentGun.bullets[i].x &&
                 this.y < player.currentGun.bullets[i].y + player.currentGun.bullets[i].height &&
                 this.y + this.height > player.currentGun.bullets[i].y){
-                health.currentHealth -= 1;
+                health.damage();
                 let index = dogs.findIndex(element => element.id == this.id);
                 dogs.splice(index, 1);
                 player.currentGun.bullets.splice(i, 1);

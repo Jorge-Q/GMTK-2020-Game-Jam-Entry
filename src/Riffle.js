@@ -37,6 +37,7 @@ class Riffle extends Gun{
 
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
+        new Audio("./sounds/rifleSound.wav").play();
         player.xVelocity = -Math.cos(player.angle) * 7;
         player.yVelocity = -Math.sin(player.angle) * 7;
         this.bullets.push(new Bullet(
