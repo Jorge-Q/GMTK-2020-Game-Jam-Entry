@@ -4,7 +4,7 @@ class Rifle extends Gun{
         super(x, y, width, height)
         this.sprite = new Image();
         this.sprite.src = "./sprites/Rifle.png";
-        this.totalBullets = 10;
+        this.totalBullets = 6;
         this.currentBullets = this.totalBullets;
         this.reloadTimer = 0;
         this.bulletDelay = 0;
@@ -27,7 +27,7 @@ class Rifle extends Gun{
             }
         }
         else{
-            if(this.reloadTimer >= 80){
+            if(this.reloadTimer >= 50){
                 this.reloadTimer = 0;
                 this.currentBullets = this.totalBullets;
             }
@@ -38,8 +38,8 @@ class Rifle extends Gun{
     //Function that adds a bullet to the bullet list & adds player knockback
     shoot(){
         new Audio("./sounds/rifleSound.wav").play();
-        player.xVelocity = -Math.cos(player.angle) * 7;
-        player.yVelocity = -Math.sin(player.angle) * 7;
+        player.xVelocity = -Math.cos(player.angle) * 4;
+        player.yVelocity = -Math.sin(player.angle) * 4;
         this.bullets.push(new Bullet(
             this.x + this.width / 2, 
             (this.y + this.height / 2) + 20, 

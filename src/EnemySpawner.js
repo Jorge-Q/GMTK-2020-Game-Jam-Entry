@@ -13,7 +13,7 @@ class EnemySpawner extends Entity{
 
     update(){
         if(this.cooldown <= 0){
-            this.cooldown = 120 + this.getRandomInt(120);
+            this.cooldown = 85 + this.getRandomInt(120);
             this.spawnEnemy();
         }
         this.cooldown --;
