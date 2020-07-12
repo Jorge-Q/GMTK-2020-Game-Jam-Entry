@@ -1,6 +1,6 @@
-class Pedestal extends Entity{
+class Pedestal extends Entity {
 
-    constructor(x, y, width, height){
+    constructor(x, y, width, height) {
         super(x, y, width, height);
         this.sprite = new Image();
         this.sprite.src = "./sprites/Pedestal.png";
@@ -16,48 +16,50 @@ class Pedestal extends Entity{
         this.shotgunSprite.src = "./sprites/Shotgun.png";
     }
 
-    update(){
+    update() {
         this.checkPlayercollision();
-        if(this.gunSpawnTimer >= 120){
+        if (this.gunSpawnTimer >= 120) {
             this.gun = this.gunOptions[this.getRandomInt(3)];
             this.gunSpawnTimer = 0;
         }
-        this.gunSpawnTimer ++;
+        this.gunSpawnTimer++;
     }
 
-    render(){
+    render() {
         super.render();
-        if(this.gun == null){
+        if (this.gun == null) {
             return;
         }
-        if(this.gun == "SHOTGUN"){
+        if (this.gun == "SHOTGUN") {
             graphics.drawImage(this.shotgunSprite, this.x, this.y - 8, 22, 10);
         }
-        else if(this.gun == "PISTOL"){
+        else if (this.gun == "PISTOL") {
             graphics.drawImage(this.pistolSprite, this.x, this.y - 8, 22, 10);
         }
-        else if(this.gun == "RIFFLE"){
+        else if (this.gun == "RIFFLE") {
             graphics.drawImage(this.riffleSprite, this.x, this.y - 8, 22, 10);
         }
     }
 
-    checkPlayercollision(){
-        if(this.x < player.x + player.width &&
+    checkPlayercollision() {
+        if (this.x < player.x + player.width &&
             this.x + this.width > player.x &&
             this.y < player.y + player.height &&
-            this.y + this.height > player.y){
+            this.y + this.height > player.y) {
             this.gunSpawnTimer = 0;
-            new Audio("./sounds/pickupSound.wav").play();
-            if(this.gun == "SHOTGUN"){
-                player.currentGun = new Shotgun(this.x, this.y, 22, 10);
+            if (this.gun != null) {
+                new Audio("./sounds/pickupSound.wav").play();
+                if (this.gun == "SHOTGUN") {
+                    player.currentGun = new Shotgun(this.x, this.y, 22, 10);
+                }
+                else if (this.gun == "PISTOL") {
+                    player.currentGun = new Pistol(this.x, this.y, 22, 10);
+                }
+                else if (this.gun == "RIFFLE") {
+                    player.currentGun = new Riffle(this.x, this.y, 22, 10);
+                }
+                this.gun = null;
             }
-            else if(this.gun == "PISTOL"){
-                player.currentGun = new Pistol(this.x, this.y, 22, 10);
-            }
-            else if(this.gun == "RIFFLE"){
-                player.currentGun = new Riffle(this.x, this.y, 22, 10);
-            }
-            this.gun = null;
         }
     }
 
