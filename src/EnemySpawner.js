@@ -5,6 +5,7 @@ class EnemySpawner extends Entity{
         this.sprite = new Image();
         this.sprite.src = "./sprites/spaceship.png";
         this.cooldown = 120;
+        this.disable = false;
     }
 
     getRandomInt(max) {
@@ -14,7 +15,9 @@ class EnemySpawner extends Entity{
     update(){
         if(this.cooldown <= 0){
             this.cooldown = 85 + this.getRandomInt(120);
-            this.spawnEnemy();
+            if(!this.disable){
+                this.spawnEnemy();
+            }
         }
         this.cooldown --;
     }

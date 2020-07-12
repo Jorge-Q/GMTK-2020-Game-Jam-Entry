@@ -36,6 +36,7 @@ let score;
 let playing;
 
 let displaySplash = true;
+let disableTimer;
 
 window.onload = () => {
     onCreate();
@@ -57,9 +58,12 @@ function onCreate() {
     dogs = [];
     spawners = [];
     spawners.push(new EnemySpawner(40, 60, 60, 40));
+    spawners[0].disable = true;
     spawners.push(new EnemySpawner(frame.width - 70, 60, 60, 40));
     spawners.push(new EnemySpawner(frame.width - 70, frame.height - 70, 60, 40));
+    spawners.push(new EnemySpawner(40, frame.height - 70, 60, 40));
     playing = true;
+    disableTimer = 0;
 }
 
 function update() {
@@ -76,6 +80,11 @@ function update() {
         enemies.forEach(enemy => enemy.update());
         hearts.forEach(heart => heart.update());
         dogs.forEach(dog => dog.update());
+        if(disableTimer >= 120){
+            controlSpawnRate();
+            disableTimer = 0;
+        }
+        disableTimer ++;
     }
 }
 
@@ -101,6 +110,15 @@ function render() {
         drawText("CLICK TO PLAY AGAIN", frame.width / 2 - 100, frame.height / 2);
         drawText("SCORE: " + score.toString(), frame.width / 2 - 40, frame.height / 2 + 50);
     }
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function controlSpawnRate(){
+    spawners.forEach(spawn => spawn.disable = false);
+    spawners[getRandomInt(4)].disable = true;
 }
 
 function drawText(text, x, y, size) {

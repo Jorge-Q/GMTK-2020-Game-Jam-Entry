@@ -23,6 +23,6 @@ class HealthSpawner{
     }
 
     spawnHeart(x, y){
-        hearts.push(new Heart(x, y, 15, 15));
+        hearts.push(new Heart(x, y, 16, 16));
     }
 }

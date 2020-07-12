@@ -2,7 +2,7 @@ class Heart extends Entity{
     constructor(x, y, width, height){
         super(x, y, width, height);
         this.sprite = new Image();
-        this.sprite.src = "./sprites/fullHeart.png";
+        this.sprite.src = "./sprites/hpickup.png";
         this.disappear = 300;
         this.currentTime = 0;
     }

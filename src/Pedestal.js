@@ -46,7 +46,6 @@ class Pedestal extends Entity {
             this.x + this.width > player.x &&
             this.y < player.y + player.height &&
             this.y + this.height > player.y) {
-            this.gunSpawnTimer = 0;
             if (this.gun != null) {
                 new Audio("./sounds/pickupSound.wav").play();
                 if (this.gun == "SHOTGUN") {
@@ -59,6 +58,7 @@ class Pedestal extends Entity {
                     player.currentGun = new Rifle(this.x, this.y, 22, 10);
                 }
                 this.gun = null;
+                this.gunSpawnTimer = 0;
             }
         }
     }
