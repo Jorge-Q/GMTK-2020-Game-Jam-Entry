@@ -2,6 +2,9 @@ let frame = document.getElementById("frame");
 let graphics = frame.getContext("2d");
 graphics.imageSmoothingEnabled = false;
 
+let splash = new Image();
+splash.src = "./sprites/splash.png";
+
 let background = new Image();
 background.src = "./sprites/background.png";
 
@@ -30,6 +33,8 @@ let spawners;
 let score;
 let playing;
 
+let displaySplash = true;
+
 window.onload = ()=>{
     onCreate();
     setInterval(()=>{
@@ -57,6 +62,9 @@ function onCreate(){
 }
 
 function update(){
+    if(displaySplash){
+        return;
+    }
     if(playing){
         spawners.forEach(spawn => spawn.update());
         dogSpawner.update();
@@ -70,6 +78,11 @@ function update(){
 
 function render(){
     graphics.clearRect(0, 0, frame.width, frame.height);
+    if(displaySplash){
+        graphics.drawImage(splash, 0, 0, frame.width, frame.height);
+        drawText("CLICK TO PLAY", frame.width / 2, frame.height / 2, 40);
+        return;
+    }
     graphics.drawImage(background, 0, 0, frame.width, frame.height);
     pedestal.render();
     player.render();
@@ -107,5 +120,8 @@ window.addEventListener("mousemove", (event)=>{
 window.addEventListener("click", (event)=>{
     if(!playing){
         onCreate();
+    }
+    if(displaySplash){
+        displaySplash = false;
     }
 });
