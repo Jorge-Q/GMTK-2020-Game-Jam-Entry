@@ -16,6 +16,6 @@ class EnemySpawner extends Entity{
     }
 
     spawnEnemy(){
-        enemies.push(new Enemy(getId(), this.x, this.y, 26, 24));
+        enemies.push(new Enemy(getId(), this.x, this.y, 24, 24));
     }
 }
