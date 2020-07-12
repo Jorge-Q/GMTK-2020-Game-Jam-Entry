@@ -26,7 +26,7 @@ class Pistol extends Gun{
             }
         }
         else{
-            if(this.reloadTimer >= 60){
+            if(this.reloadTimer >= 40){
                 this.reloadTimer = 0;
                 this.currentBullets = this.totalBullets;
             }
