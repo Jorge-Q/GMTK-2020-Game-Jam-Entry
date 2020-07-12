@@ -7,9 +7,9 @@ class Health{
         this.hearthHeight = hearthHeight;
         this.heaths = [];
         this.spriteHeathsFull = new Image();
-        this.spriteHeathsFull.src = "./sprites/fullHearth.png";
+        this.spriteHeathsFull.src = "./sprites/fullHeart.png";
         this.spriteHeathsEmpty = new Image();
-        this.spriteHeathsEmpty.src = "./sprites/emptyHearth.png";
+        this.spriteHeathsEmpty.src = "./sprites/emptyHeart.png";
         this.hitPoints = 3;
         this.currentHealth = 3;
     }

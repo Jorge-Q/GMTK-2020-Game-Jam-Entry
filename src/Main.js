@@ -24,6 +24,8 @@ let mouse = {
 
 let enemies;
 let dogs;
+let hearts;
+let heartSpawner;
 let dogSpawner;
 let spawners;
 
@@ -46,6 +48,8 @@ function onCreate(){
     health = new Health(20, 20, 30, 24);
     pedestal = new Pedestal(frame.width / 2 - 13, frame.height / 2 - 8, 26, 16);
     dogSpawner = new DogSpawner();
+    hearts = [];
+    healthSpawner = new HealthSpawner();
     score = 0;
     enemies = [];
     dogs = [];
@@ -62,8 +66,10 @@ function update(){
         dogSpawner.update();
         player.update();
         health.update();
+        healthSpawner.update();
         pedestal.update();
         enemies.forEach(enemy => enemy.update());
+        hearts.forEach(heart => heart.update());
         dogs.forEach(dog => dog.update());
     }
 }
@@ -74,6 +80,7 @@ function render(){
     pedestal.render();
     player.render();
     enemies.forEach(enemy => enemy.render());
+    hearts.forEach(heart => heart.render());
     dogs.forEach(dog => dog.render());
     spawners.forEach(spawn => spawn.render());
     health.render();
