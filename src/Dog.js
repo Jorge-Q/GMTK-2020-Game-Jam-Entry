@@ -25,6 +25,7 @@ class Dog extends Entity{
 
     update(){
         super.update();
+        this.checkPlayercollision();
         if(this.x > frame.width + 50 || this.x < -50 || this.y > frame.height + 50 || this.y < -50){
             let index = dogs.findIndex(element => element.id == this.id);
             dogs.splice(index, 1);
@@ -50,6 +51,17 @@ class Dog extends Entity{
                 player.currentGun.bullets.splice(i, 1);
                 score -= 5;
             }
+        }
+    }
+
+    checkPlayercollision(){
+        if(this.x < player.x + player.width &&
+            this.x + this.width > player.x &&
+            this.y < player.y + player.height &&
+            this.y + this.height > player.y){
+                let index = dogs.findIndex(element => element.id == this.id);
+                dogs.splice(index, 1);
+                score += 20;
         }
     }
 
