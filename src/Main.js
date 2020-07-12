@@ -37,18 +37,15 @@ let playing;
 
 let displaySplash = true;
 
-window.onload = ()=>{
+window.onload = () => {
     onCreate();
-    setInterval(()=>{
+    setInterval(() => {
         update();
         render();
     }, 1000 / 60);
 }
 
-function onCreate(){
-    snd.loop = true;
-    snd.volume = 0.2;
-    snd.play();
+function onCreate() {
     player = new Player(200, 200, 28, 30);
     health = new Health(20, 20, 30, 24);
     pedestal = new Pedestal(frame.width / 2 - 13, frame.height / 2 - 8, 26, 16);
@@ -65,11 +62,11 @@ function onCreate(){
     playing = true;
 }
 
-function update(){
-    if(displaySplash){
+function update() {
+    if (displaySplash) {
         return;
     }
-    if(playing){
+    if (playing) {
         spawners.forEach(spawn => spawn.update());
         dogSpawner.update();
         player.update();
@@ -82,9 +79,9 @@ function update(){
     }
 }
 
-function render(){
+function render() {
     graphics.clearRect(0, 0, frame.width, frame.height);
-    if(displaySplash){
+    if (displaySplash) {
         graphics.drawImage(splash, 0, 0, frame.width, frame.height);
         drawText("CLICK TO PLAY", frame.width / 2, frame.height / 2, 40);
         return;
@@ -98,7 +95,7 @@ function render(){
     spawners.forEach(spawn => spawn.render());
     health.render();
     drawText(score.toString(), frame.width - 80, 40, 32);
-    if(!playing){
+    if (!playing) {
         graphics.drawImage(darkScreen, 0, 0, frame.width, frame.height);
         graphics.drawImage(gameOver, 0, 0, frame.width, frame.height);
         drawText("CLICK TO PLAY AGAIN", frame.width / 2 - 100, frame.height / 2);
@@ -106,29 +103,32 @@ function render(){
     }
 }
 
-function drawText(text, x, y, size){
-	graphics.font = size + "px pixel";
-	graphics.fillStyle = "white";
-	graphics.fillText(text, x, y);
+function drawText(text, x, y, size) {
+    graphics.font = size + "px pixel";
+    graphics.fillStyle = "white";
+    graphics.fillText(text, x, y);
 }
 
- function getId(){
+function getId() {
     let uniqueId = (new Date()).getTime();
     return ('id') + (uniqueId++) + (Math.random() * 1000);
 }
 
 // Handle Mouse Input
-window.addEventListener("mousemove", (event)=>{
+window.addEventListener("mousemove", (event) => {
     let canvasBoundingBox = frame.getBoundingClientRect();
     mouse.x = event.clientX - canvasBoundingBox.left;
     mouse.y = event.clientY - canvasBoundingBox.top;
 });
 
-window.addEventListener("click", (event)=>{
-    if(!playing){
+window.addEventListener("click", (event) => {
+    if (!playing) {
         onCreate();
     }
-    if(displaySplash){
+    if (displaySplash) {
+        snd.loop = true;
+        snd.volume = 0.2;
+        snd.play();
         displaySplash = false;
     }
 });
