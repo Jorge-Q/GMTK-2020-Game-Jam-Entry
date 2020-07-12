@@ -11,6 +11,8 @@ gameOver.src = "./sprites/GameOver.png";
 let darkScreen = new Image();
 darkScreen.src = "./sprites/dark_screen.png";
 
+var snd = new Audio("./sounds/main_theme.wav");
+
 let player;
 let health;
 
@@ -37,6 +39,9 @@ window.onload = ()=>{
 }
 
 function onCreate(){
+    snd.loop = true;
+    snd.volume = 0.2;
+    snd.play();
     player = new Player(200, 200, 28, 30);
     health = new Health(20, 20, 30, 24);
     gun = new Gun(player.x, player.y, 22, 10);
