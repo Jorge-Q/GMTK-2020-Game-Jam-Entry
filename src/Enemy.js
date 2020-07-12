@@ -41,6 +41,9 @@ class Enemy extends Entity{
                 this.x + this.width > player.currentGun.bullets[i].x &&
                 this.y < player.currentGun.bullets[i].y + player.currentGun.bullets[i].height &&
                 this.y + this.height > player.currentGun.bullets[i].y){
+                    var snd = new Audio("./sounds/killSound.wav");
+                    snd.volume = .3;
+                    snd.play();
                 let index = enemies.findIndex(element => element.id == this.id);
                 enemies.splice(index, 1);
                 player.currentGun.bullets.splice(i, 1);
